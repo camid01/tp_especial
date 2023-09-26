@@ -1,5 +1,5 @@
 # web2_tp_especial
-Nombre de los integrantes: Noelia D'ambrosio, Duré Camila
+Nombre de los integrantes: Noelia D'ambrosio (noeliadambrosio7@gmail.com) Duré Camila (durecamila01@gmail.com). 
 
 Temática del trabajo: la alimentación saludable
 
