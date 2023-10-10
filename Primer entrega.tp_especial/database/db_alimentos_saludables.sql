@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2023 a las 21:48:26
+-- Tiempo de generación: 10-10-2023 a las 23:15:26
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -29,21 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `compra` (
   `id_usuario` int(11) NOT NULL,
-  `id_mandadero` int(11) NOT NULL,
   `Destino` varchar(45) NOT NULL,
-  `Detalle` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `mandadero`
---
-
-CREATE TABLE `mandadero` (
-  `id_mandadero` int(11) NOT NULL,
-  `Nombre` int(11) NOT NULL,
-  `Vehiculo` int(11) NOT NULL
+  `Detalle` varchar(45) NOT NULL,
+  `Total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -66,20 +54,23 @@ CREATE TABLE `usuario` (
 -- Indices de la tabla `compra`
 --
 ALTER TABLE `compra`
-  ADD KEY `compra_id_usuario_usuario` (`id_usuario`),
-  ADD KEY `compra_id_mandadero_mandadero` (`id_mandadero`);
-
---
--- Indices de la tabla `mandadero`
---
-ALTER TABLE `mandadero`
-  ADD PRIMARY KEY (`id_mandadero`);
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -89,8 +80,13 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `compra`
 --
 ALTER TABLE `compra`
-  ADD CONSTRAINT `compra_id_mandadero_mandadero` FOREIGN KEY (`id_mandadero`) REFERENCES `mandadero` (`id_mandadero`),
-  ADD CONSTRAINT `compra_id_usuario_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
+  ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `compra_id_usuario_usuario` FOREIGN KEY (`id`) REFERENCES `compra` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
