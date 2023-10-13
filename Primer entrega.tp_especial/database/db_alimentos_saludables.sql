@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2023 a las 23:15:26
+-- Tiempo de generación: 11-10-2023 a las 02:10:05
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -34,6 +34,17 @@ CREATE TABLE `compra` (
   `Total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`id_usuario`, `Destino`, `Detalle`, `Total`) VALUES
+(1, 'Tandil', '1kg cookies de manzana', 2000),
+(2, 'Tandil', '1kg milanesas de soja, 1kg cookies', 5300),
+(3, 'Azul', '1kg milanesas de berenjena, 1kg lentejas', 4120),
+(4, 'Balcarse', '1kg frutos secos, 1kg lentejas', 3000),
+(5, 'La dulce', '1kg chips de banana, 1kg milanesas de berenje', 4700);
+
 -- --------------------------------------------------------
 
 --
@@ -43,8 +54,22 @@ CREATE TABLE `compra` (
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `Nombre` varchar(45) NOT NULL,
-  `Dirección` varchar(45) NOT NULL
+  `Dirección` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `Nombre`, `Dirección`, `email`, `password`) VALUES
+(1, 'Camila', 'Tandil', '', ''),
+(2, 'Noelia', 'Tandil', '', ''),
+(3, 'Carlitos', 'Azul', '', ''),
+(4, 'Sabrina', 'Balcarse', '', ''),
+(5, 'Matias', 'La Dulce', '', ''),
+(6, 'webadmin', 'Tandil', 'exa.unicen@gmail.com', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -61,16 +86,6 @@ ALTER TABLE `compra`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

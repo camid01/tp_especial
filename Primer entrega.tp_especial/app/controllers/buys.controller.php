@@ -13,10 +13,10 @@ class buysController{
 
     public function showBuys() {
         // obtengo tareas del controlador
-        $users = $this->model->getUsers();
+        $customers = $this->model->getCustomers();
         
         // muestro las tareas desde la vista
-        $this->view->showUsers($users);
+        $this->view->showCustomers($customers);
     }
 
     public function descriptionBuys($id){
