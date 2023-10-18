@@ -15,16 +15,18 @@ class UserModel {
     }
 
     public function getByEmail($email) {
+        
         $query = $this->db->prepare('SELECT * FROM usuarios WHERE email = ?');
         
         $query->execute([$email]);
+        
 
         $user = $query->fetch(PDO::FETCH_OBJ);
         
         if (!$this->db) {
             die("Error en la conexión a la base de datos");
         }
-
+        
         return $user;
     }
 

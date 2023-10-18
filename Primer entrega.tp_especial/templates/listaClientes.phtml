@@ -1,0 +1,12 @@
+<ul>
+    <h1>Lista de usuarios que realizaron compras en nuestra pagina</h1>
+        <?php foreach($customers as $customer){ ?>
+            <li>
+                <?php echo $customer->Nombre?>
+                <a href="ampliar/<?= $customer->id ?>" type="button" class='btn btn-outline-primary ml-auto'>Ver Compras</a>
+                <a href="insertar/<?= $customer->id ?>" type="button" class='btn btn-warning ml-auto'>Agregar Compra</a>
+                <a href="ampliar/<?= $customer->id ?>" type="button" class='btn btn-danger ml-auto'>Eliminar Usuario</a>
+                <a href="modificar/<?= $customer->id ?>" type="button" class='btn btn-primary ml-auto'>Editar Compra</a>
+            </li>
+        <?php } ?>
+</ul>

@@ -3,25 +3,16 @@
 class buysView {
     
     public function showHome(){
-        require 'templates/header.phtml';
-        echo '<h1>Aca va el home</h1>';
+        require_once 'templates/header.phtml';
+        echo '<h1>Alimentos, nutrición, descanso y deporte</h1>
+            <p>La alimentación saludable comienza con la elección de alimentos saludables. No necesita ser un chef para elaborar comidas nutritivas y saludables para el corazón que su familia adorará. Aprenda en qué debe fijarse en el supermercado, los restaurantes, el lugar de trabajo o en cualquier otra ocasión relacionada con la alimentación.</p>
+            <img src="img/portada.jpeg" alt="">';
     }
+
     
     public function showCustomers($customers) {
-        require 'templates/header.phtml';
-        ?>
-
-        <ul>
-            <h1>Lista de usuarios que realizaron compras en nuestra pagina</h1>
-        <?php foreach($customers as $customer) { ?>
-            <li>
-                <?php echo $customer->Nombre?>
-                <a href="ampliar/<?php echo $customer->id ?>" type="button" class='btn btn-danger ml-auto'>Detalle</a>
-            </li>
-        <?php } ?>
-        </ul>
-
-        <?php
+        require_once 'templates/header.phtml';
+        require_once 'templates/listaClientes.phtml';
     }
 
     public function showDetalle($description){
@@ -36,5 +27,16 @@ class buysView {
                 $error
             </div> 
         ";
+    }
+
+    public function showFormAgregar($cliente){
+        require_once 'templates/header.phtml';
+        require_once 'templates/agregarCompra.phtml'; 
+
+    }
+
+    public function showFormEditar($compra){
+        require_once 'templates/header.phtml';
+        require_once 'templates/editarCompra.phtml'; 
     }
 }

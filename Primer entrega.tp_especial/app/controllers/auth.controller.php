@@ -6,10 +6,14 @@ require_once './app/helpers/auth.helper.php';
 class AuthController {
     private $view;
     private $model;
+    private $authHelper; 
+
 
     function __construct() {
         $this->model = new UserModel();
         $this->view = new AuthView();
+        $this->authHelper= new AuthHelper();
+
     }
 
     public function showRegistro() {
@@ -56,20 +60,25 @@ class AuthController {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+
         // busco el usuario
         $user = $this->model->getByEmail($email);
 
+        // encontró un user con el username que mandó, y tiene la misma contraseña
         if (!empty($user) && password_verify($password, $user->password)) {
             // ACA LO AUTENTIQUE
             AuthHelper::login($user);
-            header('Location: ' . BASE_URL);
+          
+            $this->view->showHeader();
+            header('Location: ' . BASE_URL . 'home');
         } else {
             $this->view->showLogin('Usuario inválido');
         }
     }
     
     public function logout() {
-        AuthHelper::logout();
-        header('Location: ' . BASE_URL);    
+        $this->authHelper->logout(); 
+        //header('Location: ' . BASE_URL . '/home');
     }
+
 }

@@ -18,8 +18,8 @@ $params = explode('/', $action);
 
 switch ($params[0]) {
     case 'home':
-        $view = new buysView();
-        $view->showHome();
+        $controller = new buysController();
+        $controller->showHome();
         break;
     case 'listar':
         $controller = new buysController();
@@ -45,6 +45,26 @@ switch ($params[0]) {
     case 'auth':
         $controller = new AuthController();
         $controller->auth();
+        break;
+    case 'insertar': 
+        $controller = new buysController();
+        $controller->nuevaCompra($params[1]); 
+        break;
+    case 'aniadir':
+        $controller = new buysController(); 
+        $controller->insertarNuevaCompra($params[1]); 
+        break; 
+    case 'borrar': 
+        $controller = new buysController();
+        $controller->borrarCompra($params[1]); 
+        break;
+    case 'modificar': 
+        $controller = new buysController();
+        $controller->modificarCompra($params[1]); 
+        break;
+    case 'editar': 
+        $controller = new buysController();
+        $controller->editarCompra($params[1]);
         break;
     case 'logout':
         $controller = new AuthController();

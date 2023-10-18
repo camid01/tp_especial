@@ -14,16 +14,19 @@ class AuthHelper {
         $_SESSION['USER_EMAIL'] = $user->email; 
     }
 
-    public static function logout() {
+    public function logout() {
         AuthHelper::init();
+        session_start();
         session_destroy();
+        header('Location: ' . BASE_URL . '/login'); // Redirige a la página de inicio de sesión
+        exit();
     }
 
     public static function verify() {
         AuthHelper::init();
         if (!isset($_SESSION['USER_ID'])) {
             header('Location: ' . BASE_URL . '/login');
-            die();
+            exit();
         }
     }
 }

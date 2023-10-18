@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar Compra</title>
+</head>
+<body>
+<div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form action="editar/<?= $compra->id ?>" method="POST">
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <input class="form-control" name="mensaje" rows="3" placeholder="Escribe tu mensaje"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Total</label>
+                        <input class="form-control" type="number" name="total" rows="3" placeholder="Escribe el total"></input>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
